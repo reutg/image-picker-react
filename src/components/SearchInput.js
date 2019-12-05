@@ -4,11 +4,9 @@ import { withStyles } from '@material-ui/styles'
 
 const styles = {
   form: {
-    margin: '2% 3%',
     display: 'flex',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    width: '70%',
   },
   input: {
     width: '80%',
@@ -47,7 +45,7 @@ class SearchInput extends Component {
           onChange={this.handleChange}
         />
 
-        <Button type='submit' color='primary' variant='contained'>
+        <Button type='submit' color='secondary' variant='contained'>
           Search
         </Button>
       </form>

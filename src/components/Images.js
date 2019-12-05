@@ -6,11 +6,11 @@ import { withStyles } from '@material-ui/styles'
 import Image from './Image'
 
 const styles = {
-  imagesContainer: {
+  images: {
     display: 'flex',
     flexWrap: 'wrap',
     justifyContent: 'center',
-    margin: '5% 4%',
+    margin: '3% 4%',
   },
   infiniteScroll: {
     display: 'flex',
@@ -28,7 +28,7 @@ class Images extends Component {
     const images = toJS(this.props.imagesStore.images)
 
     return (
-      <div className={classes.imagesContainer}>
+      <div className={classes.images}>
         {images.map(image => (
           <Image key={image.id} image={image} saveToFavorites={this.saveToFavorites} />
         ))}
