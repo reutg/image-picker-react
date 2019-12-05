@@ -1,14 +1,20 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { Provider } from 'mobx-react'
+
+import { ImagesStore } from './stores/ImagesStore'
 import './index.css'
 import App from './App'
 import * as serviceWorker from './serviceWorker'
 
-import { ImagesStore } from './stores/ImagesStoremages'
+const imagesStore = new ImagesStore()
+const stores = { imagesStore }
 
-let imagesStore = new ImagesStore()
-
-ReactDOM.render(<App store={imagesStore} />, document.getElementById('root'))
-registerServiceWorker()
+ReactDOM.render(
+  <Provider {...stores}>
+    <App />
+  </Provider>,
+  document.getElementById('root')
+)
 
 serviceWorker.unregister()
