@@ -4,7 +4,7 @@ import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import Navbar from './components/Navbar'
 import SearchInput from './components/SearchInput'
 import Images from './components/Images'
-import Favorites from './components/Favorites'
+import Favorites from './components/Favorites/Favorites'
 import { withStyles } from '@material-ui/styles'
 
 const theme = createMuiTheme({

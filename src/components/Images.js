@@ -21,7 +21,14 @@ const styles = {
 @inject('imagesStore')
 @observer
 class Images extends Component {
-  saveToFavorites = image => {}
+  saveToFavorites = image => {
+    const savedImage = {
+      id: image.id,
+      imageURL: image.largeImageURL,
+      description: image.tags,
+    }
+    this.props.imagesStore.saveToFavorites(savedImage)
+  }
 
   render() {
     const { classes } = this.props

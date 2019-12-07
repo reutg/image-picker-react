@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { TextField, Button } from '@material-ui/core'
+import { TextField, Button, FormHelperText } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
 
 const styles = {
@@ -8,7 +8,9 @@ const styles = {
     justifyContent: 'space-evenly',
     alignItems: 'center',
   },
-  input: {
+  inputContainer: {
+    display: 'flex',
+    flexDirection: 'column',
     width: '80%',
   },
 }
@@ -19,8 +21,13 @@ class SearchInput extends Component {
 
     this.state = {
       searchInput: '',
+      showError: false,
     }
   }
+
+  // handleinputError = () => {
+  //   return 'Please enter a search term'
+  // }
 
   handleChange = event => {
     this.setState({ searchInput: event.target.value })
@@ -28,23 +35,31 @@ class SearchInput extends Component {
 
   getImages = event => {
     event.preventDefault()
-
-    this.props.getImages(this.state.searchInput)
+    const { searchInput } = this.state
+    if (searchInput.length === 0) {
+      this.setState({ showError: true })
+    } else {
+      this.props.getImages(searchInput)
+    }
   }
 
   render() {
     const { classes } = this.props
-    const { searchInput } = this.state
+    const { searchInput, showError } = this.state
 
     return (
       <form className={classes.form} noValidate autoComplete='off' onSubmit={this.getImages}>
-        <TextField
-          className={classes.input}
-          name='searchInput'
-          value={searchInput}
-          onChange={this.handleChange}
-        />
+        <div className={classes.inputContainer}>
+          <TextField
+            required
+            className={classes.input}
+            name='searchInput'
+            value={searchInput}
+            onChange={this.handleChange}
+          />
 
+          {showError && <FormHelperText error>Please enter a search term</FormHelperText>}
+        </div>
         <Button type='submit' color='secondary' variant='contained'>
           Search
         </Button>

@@ -24,9 +24,10 @@ const styles = {
 }
 
 class Image extends Component {
+ 
   render() {
-    const { classes, image, saveToFavorites } = this.props
-    
+    const { classes, image,saveToFavorites } = this.props
+
     if (image) {
       return (
         <div
