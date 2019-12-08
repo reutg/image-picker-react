@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import { observer, inject } from 'mobx-react'
-import { toJS } from 'mobx'
 
 import { Typography } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
@@ -9,13 +8,20 @@ import EmptyFavorites from './EmptyFavorites'
 
 const styles = {
   container: {
-    width: '30%',
+    paddingTop: '2%',
+    width: '35%',
+    '@media (max-width:1000px)': {
+      width: '100%',
+    },
   },
   header: {
     textAlign: 'center',
   },
   favorites: {
-    marginTop: '10.5%',
+    marginTop: '5%',
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
   },
 }
 
@@ -32,7 +38,6 @@ class Favorites extends Component {
 
   render() {
     const { classes, imagesStore } = this.props
-    console.log(toJS(imagesStore.favorites))
     return (
       <div className={classes.container}>
         <Typography color='secondary' className={classes.header} variant='h6'>
@@ -42,7 +47,7 @@ class Favorites extends Component {
           {imagesStore.favoritesLength <= 0 ? (
             <EmptyFavorites />
           ) : (
-            imagesStore.favorites.map(favorite => (
+            imagesStore.favoritesToArray.map(favorite => (
               <Favorite
                 key={favorite.id}
                 favorite={favorite}

@@ -7,11 +7,12 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-evenly',
     alignItems: 'center',
+    margin: '3%',
   },
   inputContainer: {
     display: 'flex',
     flexDirection: 'column',
-    width: '80%',
+    width: '70%',
   },
 }
 

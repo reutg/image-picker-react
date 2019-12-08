@@ -8,7 +8,7 @@ const styles = {
     display: 'flex',
   },
   input: {
-    fontSize: '0.7em',
+    fontSize: '0.8em',
   },
 }
 class EditDescriptionInput extends Component {

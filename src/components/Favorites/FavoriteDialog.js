@@ -1,49 +1,39 @@
 import React, { Component } from 'react'
-import { Dialog } from '@material-ui/core'
-import FavoriteActions from './FavoriteActions'
+import { Dialog, Fab } from '@material-ui/core'
 import { withStyles } from '@material-ui/styles'
+
+import CloseIcon from '@material-ui/icons/Close'
 
 const styles = {
   image: {
-    width: '100%',
-    height: '100%',
-  },
-  actions: {
-    margin: '3% 0',
+    width: '70vh',
+    height: '70vh',
     display: 'flex',
-    justifyContent: 'center',
+    flexDirection: 'column',
+    justifyContent: 'end',
+    alignItems: 'flex-end',
+    backgroundSize: '100% 100%',
+  },
+  icon: {
+    margin: '1%',
+    width: '35px',
+    height: '30px',
+    backgroundColor: 'rgba(52, 70, 93, 0.3)',
   },
 }
 
 class FavoriteDialog extends Component {
   render() {
-    const {
-      classes,
-      favorite,
-      closeDialog,
-      isDialogOpen,
-      descriptionInput,
-      editFavorite,
-      handleInput,
-      isEditModeOn,
-      removeFavorite,
-      showEditFavorite,
-    } = this.props
+    const { classes, favorite, closeDialog, isDialogOpen } = this.props
     return (
       <Dialog onClose={closeDialog} open={isDialogOpen}>
-        <div>
-          <img className={classes.image} src={favorite.imageURL} alt={favorite.description} />
-        </div>
-        <div className={classes.actions}>
-          <FavoriteActions
-            favorite={favorite}
-            handleInput={handleInput}
-            descriptionInput={descriptionInput}
-            isEditModeOn={isEditModeOn}
-            editFavorite={editFavorite}
-            showEditFavorite={showEditFavorite}
-            removeFavorite={removeFavorite}
-          />
+        <div
+          className={classes.image}
+          style={{ backgroundImage: `url('${favorite.imageURL}')` }}
+        >
+          <Fab size='small' className={classes.icon} onClick={closeDialog}>
+            <CloseIcon />
+          </Fab>
         </div>
       </Dialog>
     )

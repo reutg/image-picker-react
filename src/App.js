@@ -3,7 +3,7 @@ import { observer, inject } from 'mobx-react'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
 import Navbar from './components/Navbar'
 import SearchInput from './components/SearchInput'
-import Images from './components/Images'
+import Images from './components/Images/Images'
 import Favorites from './components/Favorites/Favorites'
 import { withStyles } from '@material-ui/styles'
 
@@ -25,11 +25,16 @@ const theme = createMuiTheme({
 const styles = {
   container: {
     display: 'flex',
-    margin: '2% 3%',
     justifyContent: 'space-between',
+    '@media (max-width:1000px)': {
+      flexDirection: 'column-reverse',
+    },
   },
   search: {
     width: '65%',
+    '@media (max-width:1000px)': {
+      width: '100%',
+    },
   },
 }
 @inject('imagesStore')

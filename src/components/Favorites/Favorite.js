@@ -10,8 +10,9 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
-    margin: '3% 0',
+    marginTop: '3%',
     overflow: 'hidden',
+    width: '90%',
   },
   image: {
     width: '10vh',

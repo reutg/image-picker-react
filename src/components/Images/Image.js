@@ -8,8 +8,8 @@ const styles = {
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    width: '25vh',
-    height: '25vh',
+    width: '20vh',
+    height: '20vh',
     margin: '1.5%',
     backgroundSize: 'cover',
     borderRadius: '1%',
@@ -24,9 +24,8 @@ const styles = {
 }
 
 class Image extends Component {
- 
   render() {
-    const { classes, image,saveToFavorites } = this.props
+    const { classes, image, saveToFavorites } = this.props
 
     if (image) {
       return (

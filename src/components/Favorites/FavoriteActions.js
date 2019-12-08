@@ -10,7 +10,8 @@ const styles = {
   container: {
     display: 'flex',
     justifyContent: 'space-between',
-    width: '70%',
+    width: '100%',
+    padding: '0 3%',
   },
   description: {
     width: '70%',
