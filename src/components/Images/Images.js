@@ -6,8 +6,14 @@ import { withStyles } from '@material-ui/styles'
 
 import Image from './Image'
 import NoImagesMessage from './NoImagesMessage'
+import Pagination from './Pagination'
 
 const styles = {
+  container: {
+    display: 'flex',
+    flexDirection: 'column',
+    alignItems: 'center',
+  },
   images: {
     display: 'flex',
     flexWrap: 'wrap',
@@ -45,21 +51,24 @@ class Images extends Component {
     this.setState({ isSnackbarOpen: false })
   }
 
+  handleChangePage = () => {}
+
   render() {
-    const { classes } = this.props
-    const images = toJS(this.props.imagesStore.images)
+    const { classes, imagesStore } = this.props
+    const images = toJS(imagesStore.images)
     const { isSnackbarOpen } = this.state
-    const { noResults } = this.props.imagesStore
     return (
-      <div className={classes.images}>
-        {noResults ? (
+      <div className={classes.container}>
+        {imagesStore.noResults ? (
           <NoImagesMessage />
         ) : (
-          images.map(image => (
-            <Image key={image.id} image={image} saveToFavorites={this.saveToFavorites} />
-          ))
+          <div className={classes.images}>
+            {images.map(image => (
+              <Image key={image.id} image={image} saveToFavorites={this.saveToFavorites} />
+            ))}
+          </div>
         )}
-
+        {images.length ? <Pagination /> : ''}
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',

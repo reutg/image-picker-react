@@ -34,13 +34,13 @@ class SearchInput extends Component {
     this.setState({ searchInput: event.target.value })
   }
 
-  getImages = event => {
+  loadImages = event => {
     event.preventDefault()
     const { searchInput } = this.state
     if (searchInput.length === 0) {
       this.setState({ showError: true })
     } else {
-      this.props.getImages(searchInput)
+      this.props.loadImages(searchInput)
     }
   }
 
@@ -49,7 +49,7 @@ class SearchInput extends Component {
     const { searchInput, showError } = this.state
 
     return (
-      <form className={classes.form} noValidate autoComplete='off' onSubmit={this.getImages}>
+      <form className={classes.form} noValidate autoComplete='off' onSubmit={this.loadImages}>
         <div className={classes.inputContainer}>
           <TextField
             required

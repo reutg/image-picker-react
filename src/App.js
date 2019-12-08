@@ -40,8 +40,8 @@ const styles = {
 @inject('imagesStore')
 @observer
 class App extends Component {
-  getImages = async searchInput => {
-    await this.props.imagesStore.getImages(searchInput)
+  loadImages = async searchInput => {
+    await this.props.imagesStore.loadImages(searchInput)
   }
 
   render() {
@@ -51,7 +51,7 @@ class App extends Component {
         <Navbar />
         <div className={classes.container}>
           <div className={classes.search}>
-            <SearchInput getImages={this.getImages} />
+            <SearchInput loadImages={this.loadImages} />
             <Images />
           </div>
           <Favorites />

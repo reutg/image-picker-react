@@ -6,9 +6,10 @@ const KEY = '14511609-744a126e4517a4592d7bbe83d'
 export class ImagesStore {
   @observable images = []
   @observable favorites = {}
-  @observable currentPageNum
   @observable totalPagesAmount
   @observable noResults
+  @observable pageNum = 1
+  @observable query
 
   constructor() {
     const favorites = localStorage.getItem('favorites')
@@ -17,21 +18,28 @@ export class ImagesStore {
     }
   }
 
-  @action getImages = async query => {
-    const pageNum = 1
-    const images = await axios.get(
-      `https://pixabay.com/api/?key=${KEY}&q=${query}&per_page=52&page=${pageNum}&image_type="vector"`
-    )
-    const totalHits = images.data.totalHits
-
-    this.totalPagesAmount = Math.ceil(totalHits % 52)
-
-    if (images.data.hits.length > 0) {
-      this.noResults = false
-      this.images = images.data.hits
-    } else {
-      this.noResults = true
+  @action goToPage = num => {
+    if (num > 1 && num <= this.totalPagesAmount) {
+      this.pageNum = num
     }
+    this.fetchImages()
+  }
+
+  async fetchImages() {
+    const response = await axios.get(
+      `https://pixabay.com/api/?key=${KEY}&q=${this.query}&per_page=52&page=${this.pageNum}&image_type="vector"`
+    )
+
+    const { totalHits, hits } = response.data
+    this.totalPagesAmount = Math.ceil(totalHits / 52)
+    this.noResults = hits.length === 0
+    this.images = hits
+  }
+
+  @action loadImages = async query => {
+    this.query = query
+    this.pageNum = 1
+    this.fetchImages()
   }
 
   @computed get favoritesLength() {
