@@ -43,6 +43,7 @@ class Favorite extends Component {
   editFavorite = () => {
     const { favorite } = this.props
     const { descriptionInput } = this.state
+
     if (descriptionInput && descriptionInput.length) {
       this.setState({ isEditModeOn: false })
       this.props.editFavorite(favorite.id, descriptionInput)
@@ -60,6 +61,7 @@ class Favorite extends Component {
   render() {
     const { isEditModeOn, descriptionInput, isDialogOpen } = this.state
     const { classes, favorite, removeFavorite } = this.props
+
     return (
       <>
         <Paper className={classes.favorite}>
@@ -79,12 +81,11 @@ class Favorite extends Component {
             removeFavorite={removeFavorite}
           />
         </Paper>
+
         <FavoriteDialog
           favorite={favorite}
           isDialogOpen={isDialogOpen}
           closeDialog={this.closeDialog}
-          removeFavorite={removeFavorite}
-          showEditFavorite={this.showEditFavorite}
         />
       </>
     )

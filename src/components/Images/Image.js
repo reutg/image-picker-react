@@ -29,26 +29,24 @@ class Image extends Component {
   render() {
     const { classes, image, saveToFavorites, isFavorite } = this.props
 
-    if (image) {
-      return (
-        <div
-          className={classes.image}
-          style={{ backgroundImage: `url('${image.largeImageURL}')` }}
-        >
-          <Fab
-            size='small'
-            classes={{ root: classes.button }}
-            onClick={() => saveToFavorites(image)}
-          >
-            {isFavorite ? (
-              <FullHeartIcon className={classes.iconFilled} />
-            ) : (
-              <HeartIcon />
-            )}
-          </Fab>
-        </div>
-      )
+    if (!image) {
+      return
     }
+
+    return (
+      <div
+        className={classes.image}
+        style={{ backgroundImage: `url('${image.largeImageURL}')` }}
+      >
+        <Fab
+          size='small'
+          classes={{ root: classes.button }}
+          onClick={() => saveToFavorites(image)}
+        >
+          {isFavorite ? <FullHeartIcon className={classes.iconFilled} /> : <HeartIcon />}
+        </Fab>
+      </div>
+    )
   }
 }
 

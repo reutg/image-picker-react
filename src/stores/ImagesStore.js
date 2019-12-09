@@ -19,19 +19,20 @@ export class ImagesStore {
   }
 
   @action goToPage = num => {
-    if (num > 1 && num <= this.totalPagesAmount) {
+    if (num !== this.pageNum && num >= 1 && num <= this.totalPagesAmount) {
       this.pageNum = num
+      this.callApi()
     }
-    this.fetchImages()
   }
 
-  async fetchImages() {
+  async callApi() {
+    const perPage = 52
     const response = await axios.get(
-      `https://pixabay.com/api/?key=${KEY}&q=${this.query}&per_page=52&page=${this.pageNum}&image_type="vector"`
+      `https://pixabay.com/api/?key=${KEY}&q=${this.query}&per_page=${perPage}&page=${this.pageNum}&image_type="vector"`
     )
 
     const { totalHits, hits } = response.data
-    this.totalPagesAmount = Math.ceil(totalHits / 52)
+    this.totalPagesAmount = Math.ceil(totalHits / perPage)
     this.noResults = hits.length === 0
     this.images = hits
   }
@@ -39,7 +40,7 @@ export class ImagesStore {
   @action loadImages = async query => {
     this.query = query
     this.pageNum = 1
-    this.fetchImages()
+    await this.callApi()
   }
 
   @computed get favoritesToArray() {
@@ -49,6 +50,7 @@ export class ImagesStore {
   @computed get favoritesLength() {
     return this.favoritesToArray.length
   }
+
   saveFavoritesToLocalStroage() {
     localStorage.setItem('favorites', JSON.stringify(this.favorites))
   }
@@ -68,8 +70,8 @@ export class ImagesStore {
     this.saveFavoritesToLocalStroage()
   }
 
-  @action editFavorite = (favoriteId, newDescrpition) => {
-    this.favorites[favoriteId].description = newDescrpition
+  @action editFavorite = (favoriteId, description) => {
+    this.favorites[favoriteId] = { ...this.favorites[favoriteId], description }
     this.saveFavoritesToLocalStroage()
   }
 }

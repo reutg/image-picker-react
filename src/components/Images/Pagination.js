@@ -11,8 +11,8 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     padding: '5%',
-    width: '70%',
     justifyContent: 'space-evenly',
+    flexWrap: 'wrap',
   },
   pageButton: {
     fontSize: '0.7em',
@@ -21,13 +21,9 @@ const styles = theme => ({
     fontSize: '0.7em',
     color: theme.palette.secondary.main,
   },
-  root: {
-    width: '80%',
-  },
-
   grouped: {
-    width: '10%',
-    minWidth: 'auto',
+    minWidth: '10%',
+    padding: '2px 8px',
   },
 })
 
@@ -37,6 +33,7 @@ class Pagination extends Component {
   createPages = () => {
     const { classes, imagesStore } = this.props
     const pages = []
+
     for (let i = 1; i <= imagesStore.totalPagesAmount; i++) {
       pages.push(
         <Button
@@ -48,6 +45,7 @@ class Pagination extends Component {
         </Button>
       )
     }
+
     return pages
   }
 
@@ -57,23 +55,32 @@ class Pagination extends Component {
 
   render() {
     const { classes, imagesStore } = this.props
+
     return (
       <div className={classes.container}>
-        <IconButton size='small' onClick={() => this.goToPage(imagesStore.pageNum - 1)}>
+        <IconButton
+          className={classes.arrow}
+          onClick={() => this.goToPage(imagesStore.pageNum - 1)}
+        >
           <ArrowBack />
         </IconButton>
+
         <ButtonGroup
-          classes={{ grouped: classes.grouped, root: classes.root }}
-          variant='textfhfhrfhr'
-          size='small'
+          classes={{ grouped: classes.grouped, root: classes.buttonGroup }}
+          variant='text'
         >
           {this.createPages()}
         </ButtonGroup>
-        <IconButton size='small' onClick={() => this.goToPage(imagesStore.pageNum + 1)}>
+
+        <IconButton
+          className={classes.arrow}
+          onClick={() => this.goToPage(imagesStore.pageNum + 1)}
+        >
           <ArrowForward />
         </IconButton>
       </div>
     )
   }
 }
+
 export default withStyles(styles)(Pagination)

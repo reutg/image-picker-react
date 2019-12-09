@@ -26,6 +26,7 @@ const styles = {
 class FavoriteDialog extends Component {
   render() {
     const { classes, favorite, closeDialog, isDialogOpen } = this.props
+    
     return (
       <Dialog onClose={closeDialog} open={isDialogOpen}>
         <div

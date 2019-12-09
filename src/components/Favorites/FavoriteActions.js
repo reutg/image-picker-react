@@ -38,6 +38,7 @@ class FavoriteActions extends Component {
       removeFavorite,
       favorite,
     } = this.props
+
     return (
       <div className={classes.container}>
         <div className={classes.description}>
@@ -48,6 +49,7 @@ class FavoriteActions extends Component {
             editFavorite={editFavorite}
           />
         </div>
+
         <div className={classes.actions}>
           <EditIcon className={classes.icon} onClick={showEditFavorite} />
           <DeleteIcon className={classes.icon} onClick={() => removeFavorite(favorite.id)} />

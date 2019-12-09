@@ -11,9 +11,11 @@ const styles = {
     fontSize: '0.8em',
   },
 }
+
 class EditDescriptionInput extends Component {
   render() {
     const { classes, handleInput, descriptionInput, isEditModeOn, editFavorite } = this.props
+
     return (
       <div className={classes.inputContainer}>
         <Input
@@ -24,6 +26,7 @@ class EditDescriptionInput extends Component {
           disableUnderline={isEditModeOn ? false : true}
           disabled={isEditModeOn ? false : true}
         />
+
         {isEditModeOn && (
           <IconButton onClick={editFavorite}>
             <SaveIcon color='primary' />

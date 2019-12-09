@@ -7,7 +7,7 @@ const styles = {
     display: 'flex',
     justifyContent: 'space-evenly',
     alignItems: 'center',
-    margin: '3%',
+    margin: '5% 3%',
   },
   inputContainer: {
     display: 'flex',
@@ -26,16 +26,13 @@ class SearchInput extends Component {
     }
   }
 
-  // handleinputError = () => {
-  //   return 'Please enter a search term'
-  // }
-
   handleChange = event => {
     this.setState({ searchInput: event.target.value })
   }
 
   loadImages = event => {
     event.preventDefault()
+    
     const { searchInput } = this.state
     if (searchInput.length === 0) {
       this.setState({ showError: true })
@@ -57,6 +54,7 @@ class SearchInput extends Component {
             name='searchInput'
             value={searchInput}
             onChange={this.handleChange}
+            placeholder='Search for images...'
           />
 
           {showError && <FormHelperText error>Please enter a search term</FormHelperText>}

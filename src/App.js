@@ -37,6 +37,7 @@ const styles = {
     },
   },
 }
+
 @inject('imagesStore')
 @observer
 class App extends Component {

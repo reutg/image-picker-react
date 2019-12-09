@@ -28,7 +28,6 @@ const styles = {
 @inject('imagesStore')
 @observer
 class Favorites extends Component {
-  
   removeFavorite = favoriteId => {
     this.props.imagesStore.removeFavorite(favoriteId)
   }
@@ -45,6 +44,7 @@ class Favorites extends Component {
         <Typography color='secondary' className={classes.header} variant='h6'>
           Favorites list
         </Typography>
+        
         <div className={classes.favorites}>
           {imagesStore.favoritesLength <= 0 ? (
             <EmptyFavorites />

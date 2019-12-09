@@ -19,11 +19,7 @@ const styles = {
     flexWrap: 'wrap',
     justifyContent: 'center',
     margin: '3% 4%',
-  },
-  infiniteScroll: {
-    display: 'flex',
-    justifyContent: 'center',
-  },
+  }
 }
 
 @inject('imagesStore')
@@ -73,7 +69,9 @@ class Images extends Component {
             ))}
           </div>
         )}
+
         {images.length ? <Pagination /> : ''}
+        
         <Snackbar
           anchorOrigin={{
             vertical: 'bottom',
