@@ -1,0 +1,21 @@
+{
+  "files": {
+    "main.css": "/image-picker-react/static/css/main.34de6062.chunk.css",
+    "main.js": "/image-picker-react/static/js/main.a460c724.chunk.js",
+    "main.js.map": "/image-picker-react/static/js/main.a460c724.chunk.js.map",
+    "runtime-main.js": "/image-picker-react/static/js/runtime-main.166f1be3.js",
+    "runtime-main.js.map": "/image-picker-react/static/js/runtime-main.166f1be3.js.map",
+    "static/js/2.7a2a0678.chunk.js": "/image-picker-react/static/js/2.7a2a0678.chunk.js",
+    "static/js/2.7a2a0678.chunk.js.map": "/image-picker-react/static/js/2.7a2a0678.chunk.js.map",
+    "index.html": "/image-picker-react/index.html",
+    "precache-manifest.33cadbc7ce848bd925ca2554de687d81.js": "/image-picker-react/precache-manifest.33cadbc7ce848bd925ca2554de687d81.js",
+    "service-worker.js": "/image-picker-react/service-worker.js",
+    "static/css/main.34de6062.chunk.css.map": "/image-picker-react/static/css/main.34de6062.chunk.css.map"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.166f1be3.js",
+    "static/js/2.7a2a0678.chunk.js",
+    "static/css/main.34de6062.chunk.css",
+    "static/js/main.a460c724.chunk.js"
+  ]
+}
