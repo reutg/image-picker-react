@@ -11,9 +11,23 @@ const styles = theme => ({
     display: 'flex',
     alignItems: 'center',
     padding: '5%',
+    width: '70%',
+    justifyContent: 'space-evenly',
+  },
+  pageButton: {
+    fontSize: '0.7em',
   },
   currentPage: {
+    fontSize: '0.7em',
     color: theme.palette.secondary.main,
+  },
+  root: {
+    width: '80%',
+  },
+
+  grouped: {
+    width: '10%',
+    minWidth: 'auto',
   },
 })
 
@@ -27,7 +41,7 @@ class Pagination extends Component {
       pages.push(
         <Button
           onClick={() => this.goToPage(i)}
-          className={imagesStore.pageNum === i ? classes.currentPage : ''}
+          className={imagesStore.pageNum === i ? classes.currentPage : classes.pageButton}
           key={i}
         >
           {i}
@@ -45,11 +59,17 @@ class Pagination extends Component {
     const { classes, imagesStore } = this.props
     return (
       <div className={classes.container}>
-        <IconButton onClick={() => this.goToPage(imagesStore.pageNum - 1)}>
+        <IconButton size='small' onClick={() => this.goToPage(imagesStore.pageNum - 1)}>
           <ArrowBack />
         </IconButton>
-        <ButtonGroup size='small'>{this.createPages()}</ButtonGroup>
-        <IconButton onClick={() => this.goToPage(imagesStore.pageNum + 1)}>
+        <ButtonGroup
+          classes={{ grouped: classes.grouped, root: classes.root }}
+          variant='textfhfhrfhr'
+          size='small'
+        >
+          {this.createPages()}
+        </ButtonGroup>
+        <IconButton size='small' onClick={() => this.goToPage(imagesStore.pageNum + 1)}>
           <ArrowForward />
         </IconButton>
       </div>
