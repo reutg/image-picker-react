@@ -25,7 +25,7 @@ class EditDescriptionInput extends Component {
           disabled={isEditModeOn ? false : true}
         />
         {isEditModeOn && (
-          <IconButton size='small' onClick={editFavorite}>
+          <IconButton onClick={editFavorite}>
             <SaveIcon color='primary' />
           </IconButton>
         )}

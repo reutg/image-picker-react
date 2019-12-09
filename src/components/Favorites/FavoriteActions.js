@@ -9,6 +9,7 @@ import EditDescriptionInput from './EditDescriptionInput'
 const styles = {
   container: {
     display: 'flex',
+    alignItems: 'center',
     justifyContent: 'space-between',
     width: '100%',
     padding: '0 3%',

@@ -9,7 +9,6 @@ const styles = {
   favorite: {
     display: 'flex',
     justifyContent: 'space-between',
-    alignItems: 'center',
     marginTop: '3%',
     overflow: 'hidden',
     width: '90%',

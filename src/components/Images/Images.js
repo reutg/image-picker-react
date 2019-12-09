@@ -51,12 +51,12 @@ class Images extends Component {
     this.setState({ isSnackbarOpen: false })
   }
 
-  handleChangePage = () => {}
-
-  render() {
+   render() {
     const { classes, imagesStore } = this.props
     const images = toJS(imagesStore.images)
+    const favorites = toJS(imagesStore.favorites)
     const { isSnackbarOpen } = this.state
+
     return (
       <div className={classes.container}>
         {imagesStore.noResults ? (
@@ -64,7 +64,12 @@ class Images extends Component {
         ) : (
           <div className={classes.images}>
             {images.map(image => (
-              <Image key={image.id} image={image} saveToFavorites={this.saveToFavorites} />
+              <Image
+                key={image.id}
+                image={image}
+                saveToFavorites={this.saveToFavorites}
+                isFavorite={!!favorites[image.id]}
+              />
             ))}
           </div>
         )}

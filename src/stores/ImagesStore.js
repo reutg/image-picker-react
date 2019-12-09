@@ -42,14 +42,13 @@ export class ImagesStore {
     this.fetchImages()
   }
 
-  @computed get favoritesLength() {
-    return this.favorites.length
-  }
-
   @computed get favoritesToArray() {
     return Object.values(this.favorites)
   }
 
+  @computed get favoritesLength() {
+    return this.favoritesToArray.length
+  }
   saveFavoritesToLocalStroage() {
     localStorage.setItem('favorites', JSON.stringify(this.favorites))
   }

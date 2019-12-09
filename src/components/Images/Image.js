@@ -1,31 +1,33 @@
 import React, { Component } from 'react'
 import { withStyles } from '@material-ui/styles'
 import HeartIcon from '@material-ui/icons/FavoriteBorder'
+import FullHeartIcon from '@material-ui/icons/Favorite'
 import { Fab } from '@material-ui/core'
 
-const styles = {
+const styles = theme => ({
   image: {
     display: 'flex',
     justifyContent: 'flex-end',
     alignItems: 'flex-end',
-    width: '20vh',
-    height: '20vh',
+    width: '15vh',
+    height: '15vh',
     margin: '1.5%',
     backgroundSize: 'cover',
+    backgroundPosition: 'center',
     borderRadius: '1%',
   },
   button: {
     margin: '5%',
-    color: 'rgba(52, 70, 93, 0.3)',
+    backgroundColor: 'rgba(247, 248, 250, 0.7)',
   },
-  icon: {
-    color: '#000',
+  iconFilled: {
+    color: theme.palette.secondary.main,
   },
-}
+})
 
 class Image extends Component {
   render() {
-    const { classes, image, saveToFavorites } = this.props
+    const { classes, image, saveToFavorites, isFavorite } = this.props
 
     if (image) {
       return (
@@ -38,7 +40,11 @@ class Image extends Component {
             classes={{ root: classes.button }}
             onClick={() => saveToFavorites(image)}
           >
-            <HeartIcon className={classes.icon} />
+            {isFavorite ? (
+              <FullHeartIcon className={classes.iconFilled} />
+            ) : (
+              <HeartIcon />
+            )}
           </Fab>
         </div>
       )

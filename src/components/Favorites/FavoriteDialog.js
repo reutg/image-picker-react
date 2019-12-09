@@ -12,13 +12,14 @@ const styles = {
     flexDirection: 'column',
     justifyContent: 'end',
     alignItems: 'flex-end',
-    backgroundSize: '100% 100%',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
   },
   icon: {
     margin: '1%',
     width: '35px',
     height: '30px',
-    backgroundColor: 'rgba(52, 70, 93, 0.3)',
+    backgroundColor: 'rgba(247, 248, 250, 0.7)',
   },
 }
 

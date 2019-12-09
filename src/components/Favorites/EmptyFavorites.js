@@ -11,15 +11,9 @@ class EmptyFavorites extends Component {
   render() {
     const { classes } = this.props
     return (
-      <div>
-        <Typography
-          variant='caption'
-          classes={{ root: classes.root }}
-          //   style={{ display: 'flex', textAlign: 'center' }}
-        >
-          There are no items in the favorites list.
-        </Typography>
-      </div>
+      <Typography variant='caption' classes={{ root: classes.root }}>
+        There are no items in the favorites list
+      </Typography>
     )
   }
 }

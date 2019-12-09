@@ -28,6 +28,7 @@ const styles = {
 @inject('imagesStore')
 @observer
 class Favorites extends Component {
+  
   removeFavorite = favoriteId => {
     this.props.imagesStore.removeFavorite(favoriteId)
   }
@@ -38,6 +39,7 @@ class Favorites extends Component {
 
   render() {
     const { classes, imagesStore } = this.props
+
     return (
       <div className={classes.container}>
         <Typography color='secondary' className={classes.header} variant='h6'>
